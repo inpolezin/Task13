@@ -54,6 +54,27 @@
     border-radius: 3px;
 
     padding: 8px 20px;
+    cursor: pointer;
+
+}
+
+.nav {
+    cursor: pointer;
+}
+
+.tab_inner {
+    display: none;
+}
+
+.dark {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: black;
+    opacity: .3;
+    display: none;
 }
 
 .active {
@@ -91,9 +112,8 @@
 }
 
 .btn-success {
-
     height: 50px;
-    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 /* ------------EDIT------------- */
@@ -104,6 +124,7 @@
     left: calc(50% - 300px);
 
     width: 600px;
+    display: none;
 }
 
 .header-edit {
@@ -123,11 +144,16 @@
     margin-right: 10px;
 }
 
+.form-control {
+    margin-bottom: 20px;
+}
+
 .dark {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
+    left: 0;
     background-color: black;
     opacity: .3;
 }
