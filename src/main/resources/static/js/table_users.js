@@ -11,7 +11,7 @@ let hEdit = document.getElementById('hEdit')
 
 let cross = document.getElementById('cross')
 
-fetch('/admins/getAllUsers')
+fetch('/rest/getAllUsers')
     .then(response => response.json())
     .then(data => {
 
@@ -38,7 +38,7 @@ sel.addEventListener('mousedown', function () {
     }
 
 
-    fetch('/admins/getAllUsers')
+    fetch('/rest/getAllUsers')
         .then(response => response.json())
         .then(data => {
 
@@ -47,7 +47,7 @@ sel.addEventListener('mousedown', function () {
             })
         })
 
-    fetch('/admins/getLogUser')
+    fetch('/rest/getLogUser')
         .then(response => response.json())
         .then(data => {
 
@@ -245,7 +245,7 @@ function insertForm (btn, id) {
     let buttonConfirm = document.createElement('button')
     let inputPassword = document.createElement('input')
 
-    fetch('/admins/getUser/' + id)
+    fetch('/rest/getUser/' + id)
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -293,7 +293,7 @@ function insertForm (btn, id) {
             divButtons.appendChild(buttonConfirm)
             editForm.appendChild(divButtons)
 
-            fetch('/admins/getAllRoles')
+            fetch('/rest/getAllRoles')
                 .then(response => response.json())
                 .then(dataRoles => {
                     dataRoles.forEach(role => {
@@ -314,7 +314,7 @@ function insertForm (btn, id) {
         event.preventDefault()
         if (buttonConfirm.innerHTML === 'Edit') {
 
-            fetch('http://localhost:8080/admins/update', {
+            fetch('http://localhost:8080/rest/update', {
 
                 method: 'PATCH',
                 headers: {
@@ -335,7 +335,7 @@ function insertForm (btn, id) {
                         tableUsers.removeChild(tableUsers.firstChild);
                     }
 
-                    fetch('/admins/getAllUsers')
+                    fetch('/rest/getAllUsers')
                         .then(response => response.json())
                         .then(data => {
 
@@ -349,7 +349,7 @@ function insertForm (btn, id) {
                     closeEdit()
                 })
         } else {
-            fetch('http://localhost:8080/admins/' + inputId.value, {
+            fetch('http://localhost:8080/rest/' + inputId.value, {
                 method: 'DELETE',
             })
                 .then(function () {
@@ -357,7 +357,7 @@ function insertForm (btn, id) {
                         tableUsers.removeChild(tableUsers.firstChild);
                     }
 
-                    fetch('/admins/getAllUsers')
+                    fetch('/rest/getAllUsers')
                         .then(response => response.json())
                         .then(data => {
 

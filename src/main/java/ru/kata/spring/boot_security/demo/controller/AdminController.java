@@ -28,47 +28,4 @@ public class AdminController {
     public String getAllUsersPage() {
         return "admins/all";
     }
-
-    @ResponseBody
-    @GetMapping("/getAllUsers")
-    public ResponseEntity<List<User>> getAllUsers() {
-        return new ResponseEntity<>(userService.findAllUsers(), HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @GetMapping("/getAllRoles")
-    public ResponseEntity<List<Role>> getAllRoles() {
-        return new ResponseEntity<>(roleService.findAllRoles(), HttpStatus.OK);
-    }
-
-
-    @ResponseBody
-    @GetMapping("/getLogUser")
-    public ResponseEntity<User> getLogUser(Principal principal) {
-        return new ResponseEntity<>(userService.findUserByFirstname(principal.getName()), HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @GetMapping("/getUser/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(userService.findUserById(id), HttpStatus.OK);
-    }
-
-    @PostMapping("/save")
-    public ResponseEntity<HttpStatus> createUser(@RequestBody UserDto userDto) {
-        userService.saveUser(userDto);
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteUserById(@PathVariable("id") Long id) {
-        userService.deleteUserById(id);
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
-
-    @PatchMapping("/update")
-    public ResponseEntity<HttpStatus> updateUser(@RequestBody UserDto userDto) {
-        userService.updateUser(userDto);
-        return ResponseEntity.ok(HttpStatus.OK);
-    }
 }

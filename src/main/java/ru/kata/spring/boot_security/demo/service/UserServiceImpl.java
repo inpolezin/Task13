@@ -19,7 +19,6 @@ import java.util.*;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
@@ -31,6 +30,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public void saveUser(UserDto userDto) {
         User user = new User();
         user.setFirstName(userDto.getFirstName());
@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public void updateUser(UserDto userDto) {
         User user = findUserById(userDto.getId());
         user.setFirstName(userDto.getFirstName());
@@ -72,6 +73,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
@@ -94,6 +96,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @PostConstruct
     @Override
+    @Transactional
     public void init() {
         if(roleRepository.count() == 0) {
             Role roleAdmin = new Role();

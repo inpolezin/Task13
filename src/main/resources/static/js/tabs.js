@@ -81,7 +81,7 @@ function insertFormNewUser (editForm) {
 
     button.onclick = function () {
         event.preventDefault()
-        fetch('http://localhost:8080/admins/save', {
+        fetch('http://localhost:8080/rest/save', {
 
             method: 'POST',
             headers: {
@@ -101,7 +101,7 @@ function insertFormNewUser (editForm) {
                     tableUsers.removeChild(tableUsers.firstChild);
                 }
 
-                fetch('/admins/getAllUsers')
+                fetch('/rest/getAllUsers')
                     .then(response => response.json())
                     .then(data => {
 
@@ -127,7 +127,7 @@ function insertFormNewUser (editForm) {
     editForm.appendChild(selectRoles)
     editForm.appendChild(button)
 
-    fetch('/admins/getAllRoles')
+    fetch('/rest/getAllRoles')
         .then(response => response.json())
         .then(dataRoles => {
             dataRoles.forEach(role => {

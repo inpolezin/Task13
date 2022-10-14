@@ -2,7 +2,7 @@
 let infoEmail = document.getElementById("header_email")
 let infoRoles = document.getElementById("header_roles")
 
-fetch('/admins/getLogUser')
+fetch('/rest/getLogUser')
     .then(response => response.json())
     .then(data => {
 
