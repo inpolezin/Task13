@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/rest")
 @RequiredArgsConstructor
-public class ReController {
+public class RESTController {
 
     private final UserService userService;
     private final RoleService roleService;
