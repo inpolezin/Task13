@@ -215,6 +215,7 @@ function insertForm (btn, id) {
 
     let inputId = document.createElement('input')
     inputId.classList.add('form-control', 'w-50', 'mx-auto')
+    inputId.setAttribute('readonly','readonly')
     let inputFirstname = document.createElement('input')
     inputFirstname.classList.add('form-control', 'w-50', 'mx-auto')
     let inputLastname = document.createElement('input')

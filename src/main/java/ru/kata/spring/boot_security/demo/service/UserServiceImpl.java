@@ -80,25 +80,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User findUserByFirstname(String username) {
-        return userRepository.findByFirstName(username).get();
+        return userRepository.findByFirstName(username);
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) {
-        Optional<User> userOptional = userRepository.findByFirstName(s);
-
-        if(userOptional.isEmpty()) {
-            throw new UsernameNotFoundException("Username not found");
-        } else {
-            return userOptional.get();
+        User user = userRepository.findByFirstName(s);
+        if(user == null){
+            throw new UsernameNotFoundException("user not found");
         }
+        return user;
     }
 
     @PostConstruct
     @Override
     @Transactional
     public void init() {
-        if(roleRepository.count() == 0) {
+        if(roleRepository.empty()) {
             Role roleAdmin = new Role();
             roleAdmin.setName("ROLE_ADMIN");
             Role roleUser = new Role();
